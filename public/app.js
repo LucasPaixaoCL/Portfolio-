@@ -99,3 +99,52 @@ function toggleMobileMenu() {
   }
 }
 
+// Toggle theme (light/dark)
+function toggleTheme() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme') || 'light';
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  
+  html.setAttribute('data-theme', newTheme);
+  document.body.className = newTheme;
+  localStorage.setItem('theme', newTheme);
+  
+  // Update button text
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    const icon = themeToggle.querySelector('i');
+    if (icon) {
+      if (newTheme === 'dark') {
+        icon.className = 'fas fa-sun';
+        themeToggle.title = 'Modo Claro';
+      } else {
+        icon.className = 'fas fa-moon';
+        themeToggle.title = 'Modo Escuro';
+      }
+    }
+  }
+}
+
+// Initialize theme on page load
+window.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  const html = document.documentElement;
+  html.setAttribute('data-theme', savedTheme);
+  document.body.className = savedTheme;
+  
+  // Update button icon
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    const icon = themeToggle.querySelector('i');
+    if (icon) {
+      if (savedTheme === 'dark') {
+        icon.className = 'fas fa-sun';
+        themeToggle.title = 'Modo Claro';
+      } else {
+        icon.className = 'fas fa-moon';
+        themeToggle.title = 'Modo Escuro';
+      }
+    }
+  }
+})
+
