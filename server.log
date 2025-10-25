@@ -1,0 +1,10 @@
+nohup: ignoring input
+🚀 Server running on http://localhost:3000
+✗ Database initialization error: Error: There was an error establishing an SSL connection
+    at /home/ubuntu/landing_page/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async initializeDatabase (file:///home/ubuntu/landing_page/server.js:30:20)
+Error saving contact: Error: There was an error establishing an SSL connection
+    at /home/ubuntu/landing_page/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///home/ubuntu/landing_page/server.js:79:20

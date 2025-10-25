@@ -1,0 +1,12 @@
+🚀 Server running on http://localhost:3001
+📊 Demo mode: Dados armazenados em memória
+✓ Database: Não é necessário PostgreSQL para esta demo
+
+📋 Rotas disponíveis:
+  POST   /api/contacts - Criar contato
+  GET    /api/contacts - Listar contatos
+  POST   /api/comments - Criar comentário
+  GET    /api/comments/:project_id - Listar comentários
+  DELETE /api/comments/:id - Deletar comentário
+  GET    /api/health - Status do servidor
+
