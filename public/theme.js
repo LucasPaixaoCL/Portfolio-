@@ -53,5 +53,5 @@ function updateThemeToggleButton(theme) {
 }
 
 // Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', initializeTheme);
+// document.addEventListener('DOMContentLoaded', initializeTheme); // Removido para ser chamado inline no HTML
 
