@@ -1,391 +1,138 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria de Projetos - KittyHub</title>
+  <title>Galeria de Projetos - KittyHub</title> <!-- Anti-FOUC -->
+  <script> (function () { var KEY = 'kittyhub-theme', L = 'light', D = 'dark'; var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) { } var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? D : L); var html = document.documentElement; html.classList.toggle('dark', theme === D); html.classList.toggle('light', theme !== D); })(); </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
-  <script src="theme.js"></script>
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="theme.js" defer></script>
 </head>
-<body class="light bg-gradient-to-br from-slate-50 to-slate-100">
 
-  <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/" class="text-2xl font-bold text-slate-900 hover:text-blue-600 transition">KittyHub</a>
-      <nav class="hidden md:flex gap-8">
-        <a href="/" class="text-slate-600 hover:text-slate-900 transition">Home</a>
-        <a href="/galeria.html" class="text-slate-900 font-semibold">Galeria</a>
-        <a href="/sobre.html" class="text-slate-600 hover:text-slate-900 transition">Sobre Mim</a>
-        <a href="/#contact" class="text-slate-600 hover:text-slate-900 transition">Contato</a>
-      </nav>
-      <div class="flex items-center gap-4">
-        <button id="themeToggle"  class="text-slate-600 hover:text-slate-900 transition text-xl">
-          <i class="fas fa-moon"></i>
-        </button>
-        <button onclick="toggleMobileMenu()" class="md:hidden text-slate-600">
-          <i class="fas fa-bars text-2xl"></i>
-        </button>
-      </div>
-    </div>
-    <!-- Mobile Menu -->
+<body class="bg-gradient-to-br from-slate-50 to-slate-100"> <!-- Header -->
+  <header class="sticky top-0 z-50">
+    <div class="wrap glass-sm max-w-6xl mx-auto px-4 py-3 flex items-center justify-between"> <a href="/"
+        class="text-2xl font-bold text-slate-900 hover:opacity-90 transition">KittyHub</a>
+      <nav class="hidden md:flex gap-8"> <a href="/" class="text-slate-600 hover:text-slate-900 transition">Home</a> <a
+          href="/galeria.html" class="text-slate-900 font-semibold">Galeria</a> <a href="/sobre.html"
+          class="text-slate-600 hover:text-slate-900 transition">Sobre Mim</a> <a href="/#contact"
+          class="text-slate-600 hover:text-slate-900 transition">Contato</a> </nav>
+      <div class="flex items-center gap-4"> <button id="themeToggle"
+          class="text-slate-400 hover:opacity-90 transition text-xl" title="Alternar tema"> <i class="fas fa-moon"></i>
+        </button> <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400" aria-label="Abrir menu"> <i
+            class="fas fa-bars text-2xl"></i> </button> </div>
+    </div> <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
-      <nav class="flex flex-col gap-4 px-4 py-4">
-        <a href="/" class="text-slate-600 hover:text-slate-900 transition">Home</a>
-        <a href="/galeria.html" class="text-slate-900 font-semibold">Galeria</a>
-        <a href="/sobre.html" class="text-slate-600 hover:text-slate-900 transition">Sobre Mim</a>
-        <a href="/#contact" class="text-slate-600 hover:text-slate-900 transition">Contato</a>
-      </nav>
+      <nav class="flex flex-col gap-4 px-4 py-4"> <a href="/"
+          class="text-slate-700 hover:text-slate-900 transition">Home</a> <a href="/galeria.html"
+          class="text-slate-900 font-semibold">Galeria</a> <a href="/sobre.html"
+          class="text-slate-700 hover:text-slate-900 transition">Sobre Mim</a> <a href="/#contact"
+          class="text-slate-700 hover:text-slate-900 transition">Contato</a> </nav>
     </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="bg-white py-16 px-4 border-b border-slate-200">
+  </header> <!-- Hero -->
+  <section class="py-16 px-4">
     <div class="max-w-6xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-        Meus Projetos
-      </h1>
-      <p class="text-xl text-slate-600">
-        Conheça alguns dos melhores trabalhos que realizei
-      </p>
+      <div class="glass p-10 rounded-lg">
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Meus Projetos</h1>
+        <p class="text-xl text-slate-600">Conheça alguns dos melhores trabalhos que realizei</p>
+      </div>
     </div>
-  </section>
-
-  <!-- Gallery Section -->
-  <section class="py-20 px-4">
+  </section> <!-- Filtros -->
+  <section class="pt-6 px-4">
     <div class="max-w-6xl mx-auto">
-      <!-- Filter Buttons -->
-      <div class="flex flex-wrap justify-center gap-4 mb-12">
-        <button onclick="filterProjects('all')" class="filterBtn active px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold transition hover:bg-blue-700">
-          Todos
-        </button>
-        <button onclick="filterProjects('web')" class="filterBtn px-6 py-2 rounded-lg bg-slate-200 text-slate-900 font-semibold transition hover:bg-slate-300">
-          Web
-        </button>
-        <button onclick="filterProjects('design')" class="filterBtn px-6 py-2 rounded-lg bg-slate-200 text-slate-900 font-semibold transition hover:bg-slate-300">
-          Design
-        </button>
-        <button onclick="filterProjects('mobile')" class="filterBtn px-6 py-2 rounded-lg bg-slate-200 text-slate-900 font-semibold transition hover:bg-slate-300">
-          Mobile
-        </button>
-      </div>
-
-      <!-- Projects Grid -->
-      <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Project 1 -->
-        <div class="project-card group cursor-pointer" data-category="web">
-          <div class="relative overflow-hidden rounded-lg mb-4 bg-gradient-to-br from-blue-400 to-blue-600 h-64 flex items-center justify-center">
-            <i class="fas fa-globe text-white text-6xl"></i>
-            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition duration-300"></div>
-          </div>
-          <h3 class="text-xl font-semibold text-slate-900 mb-2">E-commerce Moderno</h3>
-          <p class="text-slate-600 mb-4">
-            Plataforma de vendas online com carrinho de compras, pagamento integrado e painel administrativo.
-          </p>
-          <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">React</span>
-            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">Node.js</span>
-          </div>
-          <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2">
-            Ver Projeto <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-card group cursor-pointer" data-category="design">
-          <div class="relative overflow-hidden rounded-lg mb-4 bg-gradient-to-br from-purple-400 to-purple-600 h-64 flex items-center justify-center">
-            <i class="fas fa-palette text-white text-6xl"></i>
-            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition duration-300"></div>
-          </div>
-          <h3 class="text-xl font-semibold text-slate-900 mb-2">Identidade Visual</h3>
-          <p class="text-slate-600 mb-4">
-            Desenvolvimento completo de marca: logo, paleta de cores, tipografia e guidelines de uso.
-          </p>
-          <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">Branding</span>
-            <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm font-semibold">Design</span>
-          </div>
-          <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2">
-            Ver Projeto <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-card group cursor-pointer" data-category="mobile">
-          <div class="relative overflow-hidden rounded-lg mb-4 bg-gradient-to-br from-green-400 to-green-600 h-64 flex items-center justify-center">
-            <i class="fas fa-mobile-alt text-white text-6xl"></i>
-            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition duration-300"></div>
-          </div>
-          <h3 class="text-xl font-semibold text-slate-900 mb-2">App de Fitness</h3>
-          <p class="text-slate-600 mb-4">
-            Aplicativo mobile para treinos personalizados com sincronização em tempo real e análise de progresso.
-          </p>
-          <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">React Native</span>
-            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">Firebase</span>
-          </div>
-          <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2">
-            Ver Projeto <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="project-card group cursor-pointer" data-category="web">
-          <div class="relative overflow-hidden rounded-lg mb-4 bg-gradient-to-br from-orange-400 to-orange-600 h-64 flex items-center justify-center">
-            <i class="fas fa-chart-line text-white text-6xl"></i>
-            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition duration-300"></div>
-          </div>
-          <h3 class="text-xl font-semibold text-slate-900 mb-2">Dashboard Analytics</h3>
-          <p class="text-slate-600 mb-4">
-            Plataforma de análise de dados com gráficos interativos, relatórios em tempo real e exportação de dados.
-          </p>
-          <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">Vue.js</span>
-            <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">D3.js</span>
-          </div>
-          <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2">
-            Ver Projeto <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- Project 5 -->
-        <div class="project-card group cursor-pointer" data-category="design">
-          <div class="relative overflow-hidden rounded-lg mb-4 bg-gradient-to-br from-red-400 to-red-600 h-64 flex items-center justify-center">
-            <i class="fas fa-image text-white text-6xl"></i>
-            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition duration-300"></div>
-          </div>
-          <h3 class="text-xl font-semibold text-slate-900 mb-2">Campanha Visual</h3>
-          <p class="text-slate-600 mb-4">
-            Série de peças gráficas para campanha de marketing: banners, posts e materiais impressos.
-          </p>
-          <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">Ilustração</span>
-            <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm font-semibold">Marketing</span>
-          </div>
-          <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2">
-            Ver Projeto <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="project-card group cursor-pointer" data-category="mobile">
-          <div class="relative overflow-hidden rounded-lg mb-4 bg-gradient-to-br from-indigo-400 to-indigo-600 h-64 flex items-center justify-center">
-            <i class="fas fa-shopping-bag text-white text-6xl"></i>
-            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition duration-300"></div>
-          </div>
-          <h3 class="text-xl font-semibold text-slate-900 mb-2">App de Compras</h3>
-          <p class="text-slate-600 mb-4">
-            Aplicativo de e-commerce mobile com catálogo dinâmico, carrinho persistente e múltiplas formas de pagamento.
-          </p>
-          <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">Flutter</span>
-            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">API REST</span>
-          </div>
-          <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2">
-            Ver Projeto <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
+      <div class="flex flex-wrap justify-center gap-4 mb-12"> <button onclick="filterProjects(event, 'all')"
+          class="filterBtn active px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold transition hover:bg-blue-700">Todos</button>
+        <button onclick="filterProjects(event, 'web')"
+          class="filterBtn px-6 py-2 rounded-lg btn-glass font-semibold">Web</button> <button
+          onclick="filterProjects(event, 'design')"
+          class="filterBtn px-6 py-2 rounded-lg btn-glass font-semibold">Design</button> <button
+          onclick="filterProjects(event, 'mobile')"
+          class="filterBtn px-6 py-2 rounded-lg btn-glass font-semibold">Mobile</button> </div>
     </div>
-  </section>
-
-  <!-- Projects Details with Comments -->
-  <section class="bg-white py-16 px-4">
+  </section> <!-- Grid -->
+  <section class="py-8 px-4">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">Comentários nos Projetos</h2>
-      
-      <!-- Project 1 Comments -->
-      <div class="mb-16 pb-12 border-b border-slate-200">
-        <h3 class="text-2xl font-semibold text-slate-900 mb-8">E-commerce Moderno</h3>
-        
-        <!-- Comments List -->
-        <div id="comments-project-1" class="mb-8" data-comments-container data-project-id="project-1"></div>
-        
-        <!-- Comment Form -->
-        <div class="bg-slate-50 p-6 rounded-lg">
-          <h4 class="text-lg font-semibold text-slate-900 mb-4">Deixe um Comentário</h4>
-          <div id="commentSuccess-1" class="hidden mb-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-            <i class="fas fa-check-circle mr-2"></i> Comentário adicionado com sucesso!
+      <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10"> <!-- Card 1 -->
+        <article class="project-card glass rounded-xl overflow-hidden" data-category="web">
+          <div
+            class="relative h-64 flex items-center justify-center bg-gradient-to-b from-slate-300/20 to-slate-300/10 dark:from-white/5 dark:to-white/0">
+            <i class="fas fa-globe text-white/90 text-6xl"></i> </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-slate-900 mb-2">E-commerce Moderno</h3>
+            <p class="text-slate-600 mb-4">Plataforma de vendas online com carrinho de compras, pagamento integrado e
+              painel administrativo.</p>
+            <div class="flex flex-wrap gap-2 mb-4"> <span class="badge badge-primary">React</span> <span
+                class="badge badge-green">Node.js</span> <span class="badge badge-violet">Stripe</span> </div> <a
+              href="#" class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-2">Ver
+              Projeto <i class="fas fa-arrow-right"></i></a>
           </div>
-          <form onsubmit="handleCommentSubmit(event, 'project-1', 'comments-project-1')" class="space-y-4">
-            <div>
-              <label class="block text-sm font-semibold text-slate-900 mb-2">Nome</label>
-              <input type="text" name="name" placeholder="Seu nome" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-semibold text-slate-900 mb-2">Email</label>
-              <input type="email" name="email" placeholder="seu@email.com" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-semibold text-slate-900 mb-2">Comentário</label>
-              <textarea name="text" placeholder="Seu comentário..." rows="4" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
-            </div>
-            <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition">
-              Enviar Comentário
-            </button>
-            <div class="comment-success hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-              <i class="fas fa-check-circle mr-2"></i> Comentário adicionado com sucesso!
-            </div>
-          </form>
-        </div>
-      </div>
-      
-      <!-- Project 2 Comments -->
-      <div class="mb-16 pb-12 border-b border-slate-200">
-        <h3 class="text-2xl font-semibold text-slate-900 mb-8">Identidade Visual</h3>
-        
-        <div id="comments-project-2" class="mb-8" data-comments-container data-project-id="project-2"></div>
-        
-        <div class="bg-slate-50 p-6 rounded-lg">
-          <h4 class="text-lg font-semibold text-slate-900 mb-4">Deixe um Comentário</h4>
-          <div id="commentSuccess-2" class="hidden mb-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-            <i class="fas fa-check-circle mr-2"></i> Comentário adicionado com sucesso!
+        </article> <!-- Card 2 -->
+        <article class="project-card glass rounded-xl overflow-hidden" data-category="design">
+          <div
+            class="relative h-64 flex items-center justify-center bg-gradient-to-b from-slate-300/20 to-slate-300/10 dark:from-white/5 dark:to-white/0">
+            <i class="fas fa-palette text-white/90 text-6xl"></i> </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-slate-900 mb-2">Identidade Visual</h3>
+            <p class="text-slate-600 mb-4">Desenvolvimento completo de marca: logo, paleta de cores, tipografia e
+              guidelines de uso.</p>
+            <div class="flex flex-wrap gap-2 mb-4"> <span class="badge badge-violet">Branding</span> <span
+                class="badge badge-pink">Design</span> <span class="badge badge-primary">Figma</span> </div> <a href="#"
+              class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-2">Ver Projeto <i
+                class="fas fa-arrow-right"></i></a>
           </div>
-          <form onsubmit="handleCommentSubmit(event, 'project-2', 'comments-project-2')" class="space-y-4">
-            <div>
-              <label class="block text-sm font-semibold text-slate-900 mb-2">Nome</label>
-              <input type="text" name="name" placeholder="Seu nome" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-semibold text-slate-900 mb-2">Email</label>
-              <input type="email" name="email" placeholder="seu@email.com" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-semibold text-slate-900 mb-2">Comentário</label>
-              <textarea name="text" placeholder="Seu comentário..." rows="4" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
-            </div>
-            <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition">
-              Enviar Comentário
-            </button>
-            <div class="comment-success hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-              <i class="fas fa-check-circle mr-2"></i> Comentário adicionado com sucesso!
-            </div>
-          </form>
-        </div>
-      </div>
-      
-      <!-- Project 3 Comments -->
-      <div class="mb-16 pb-12 border-b border-slate-200">
-        <h3 class="text-2xl font-semibold text-slate-900 mb-8">App de Fitness</h3>
-        
-        <div id="comments-project-3" class="mb-8" data-comments-container data-project-id="project-3"></div>
-        
-        <div class="bg-slate-50 p-6 rounded-lg">
-          <h4 class="text-lg font-semibold text-slate-900 mb-4">Deixe um Comentário</h4>
-          <div id="commentSuccess-3" class="hidden mb-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-            <i class="fas fa-check-circle mr-2"></i> Comentário adicionado com sucesso!
+        </article> <!-- Card 3 -->
+        <article class="project-card glass rounded-xl overflow-hidden" data-category="mobile">
+          <div
+            class="relative h-64 flex items-center justify-center bg-gradient-to-b from-slate-300/20 to-slate-300/10 dark:from-white/5 dark:to-white/0">
+            <i class="fas fa-mobile-alt text-white/90 text-6xl"></i> </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-slate-900 mb-2">App de Fitness</h3>
+            <p class="text-slate-600 mb-4">Aplicativo mobile para treinos personalizados com sincronização em tempo real
+              e análise de progresso.</p>
+            <div class="flex flex-wrap gap-2 mb-4"> <span class="badge badge-green">React Native</span> <span
+                class="badge badge-primary">Firebase</span> <span class="badge badge-amber">Analytics</span> </div> <a
+              href="#" class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-2">Ver
+              Projeto <i class="fas fa-arrow-right"></i></a>
           </div>
-          <form onsubmit="handleCommentSubmit(event, 'project-3', 'comments-project-3')" class="space-y-4">
-            <div>
-              <label class="block text-sm font-semibold text-slate-900 mb-2">Nome</label>
-              <input type="text" name="name" placeholder="Seu nome" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-semibold text-slate-900 mb-2">Email</label>
-              <input type="email" name="email" placeholder="seu@email.com" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-semibold text-slate-900 mb-2">Comentário</label>
-              <textarea name="text" placeholder="Seu comentário..." rows="4" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
-            </div>
-            <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition">
-              Enviar Comentário
-            </button>
-            <div class="comment-success hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-              <i class="fas fa-check-circle mr-2"></i> Comentário adicionado com sucesso!
-            </div>
-          </form>
-        </div>
+        </article>
       </div>
     </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="bg-blue-600 text-white py-16 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        Gostou dos meus trabalhos?
-      </h2>
-      <p class="text-xl mb-8 text-blue-100">
-        Vamos conversar sobre seu próximo projeto!
-      </p>
-      <a href="/#contact" class="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-blue-50 transition">
-        Entrar em Contato
-      </a>
+  </section> <!-- CTA (novo) -->
+  <section class="cta-section">
+    <div class="max-w-4xl mx-auto text-center cta-card py-10 px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3">Gostou dos meus trabalhos?</h2>
+      <p class="text-lg md:text-xl mb-8">Vamos conversar sobre seu próximo projeto!</p> <a href="/#contact"
+        class="inline-block btn-glass font-semibold py-3 px-8 rounded-lg">Entrar em Contato</a>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-slate-900 dark:bg-slate-950 text-white py-12 px-4 mt-12">
+  </section> <!-- Footer sólido -->
+  <footer class="footer-solid text-white py-12 px-4 mt-12">
     <div class="max-w-6xl mx-auto">
-      <!-- Social Links -->
-      <div class="flex justify-center gap-6 mb-8">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition" title="GitHub">
-          <i class="fab fa-github text-2xl"></i>
-        </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition" title="LinkedIn">
-          <i class="fab fa-linkedin text-2xl"></i>
-        </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition" title="Twitter">
-          <i class="fab fa-twitter text-2xl"></i>
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition" title="Instagram">
-          <i class="fab fa-instagram text-2xl"></i>
-        </a>
-        <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition" title="Behance">
-          <i class="fab fa-behance text-2xl"></i>
-        </a>
-        <a href="mailto:seu@email.com" class="text-slate-400 hover:text-white transition" title="Email">
-          <i class="fas fa-envelope text-2xl"></i>
-        </a>
+      <div class="flex justify-center gap-6 mb-8"> <a href="https://github.com" target="_blank"
+          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="GitHub"><i
+            class="fab fa-github text-2xl"></i></a> <a href="https://linkedin.com" target="_blank"
+          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="LinkedIn"><i
+            class="fab fa-linkedin text-2xl"></i></a> <a href="https://twitter.com" target="_blank"
+          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Twitter"><i
+            class="fab fa-twitter text-2xl"></i></a> <a href="https://instagram.com" target="_blank"
+          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Instagram"><i
+            class="fab fa-instagram text-2xl"></i></a> <a href="https://behance.net" target="_blank"
+          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Behance"><i
+            class="fab fa-behance text-2xl"></i></a> <a href="mailto:seu@email.com"
+          class="text-white/70 hover:text-white transition" title="Email"><i class="fas fa-envelope text-2xl"></i></a>
       </div>
-      
-      <!-- Copyright -->
-      <div class="border-t border-slate-700 pt-6 text-center">
-        <p class="text-slate-400 text-sm">
-          &copy; 2025 KittyHub. Todos os direitos reservados.
-        </p>
-        <p class="text-slate-500 text-xs mt-2">
-          Desenvolvido com <i class="fas fa-heart text-red-500"></i> por KittyHub
+      <div class="border-t border-white/10 pt-6 text-center">
+        <p class="text-white/70 text-sm">&copy; 2025 KittyHub. Todos os direitos reservados.</p>
+        <p class="text-white/60 text-xs mt-2">Desenvolvido com <i class="fas fa-heart text-red-500"></i> por KittyHub
         </p>
       </div>
     </div>
   </footer>
-
-
+  <script> function toggleMobileMenu() { const menu = document.getElementById('mobileMenu'); menu.classList.toggle('hidden'); } function filterProjects(evt, category) { const cards = document.querySelectorAll('.project-card'); const buttons = document.querySelectorAll('.filterBtn'); buttons.forEach(btn => { btn.classList.remove('active', 'bg-blue-600', 'text-white'); btn.classList.add('btn-glass'); }); if (evt && evt.currentTarget) { evt.currentTarget.classList.add('active'); evt.currentTarget.classList.remove('btn-glass'); evt.currentTarget.classList.add('bg-blue-600', 'text-white'); } cards.forEach(card => { if (category === 'all' || card.dataset.category === category) { card.style.display = 'block'; setTimeout(() => card.style.opacity = '1', 10); } else { card.style.opacity = '0'; setTimeout(() => card.style.display = 'none', 200); } }); } </script>
   <script src="comments.js"></script>
-  <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('hidden');
-    }
-
-    function filterProjects(category) {
-      const cards = document.querySelectorAll('.project-card');
-      const buttons = document.querySelectorAll('.filterBtn');
-
-      // Update active button
-      buttons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
-      buttons.forEach(btn => btn.classList.add('bg-slate-200', 'text-slate-900'));
-      event.target.classList.add('active', 'bg-blue-600', 'text-white');
-      event.target.classList.remove('bg-slate-200', 'text-slate-900');
-
-      // Filter cards
-      cards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.style.display = 'block';
-          setTimeout(() => card.style.opacity = '1', 10);
-        } else {
-          card.style.opacity = '0';
-          setTimeout(() => card.style.display = 'none', 300);
-        }
-      });
-    }
-  </script>
-
+  <script src="animations.js"></script>
 </body>
-</html>
 
+</html>

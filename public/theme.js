@@ -5,20 +5,21 @@ const DARK_THEME = 'dark';
 
 // Get saved theme or default to light
 function getSavedTheme() {
-  return localStorage.getItem(THEME_KEY) || LIGHT_THEME;
+  try { return localStorage.getItem(THEME_KEY) || LIGHT_THEME; }
+  catch { return LIGHT_THEME; }
 }
 
-// Initialize theme on page load
-function initializeTheme() {
-  const savedTheme = getSavedTheme();
-  applyTheme(savedTheme);
-  updateThemeToggleButton(savedTheme);
+function setMetaThemeColor(theme) {
+  const light = '#F8FAFC';  // background light
+  const dark = '#0F0F12';  // background dark
+  let m = document.querySelector('meta[name="theme-color"]');
+  if (!m) { m = document.createElement('meta'); m.setAttribute('name', 'theme-color'); document.head.appendChild(m); }
+  m.setAttribute('content', theme === DARK_THEME ? dark : light);
 }
 
 // Apply theme to document
 function applyTheme(theme) {
   const html = document.documentElement;
-  
   if (theme === DARK_THEME) {
     html.classList.add('dark');
     html.classList.remove('light');
@@ -26,8 +27,22 @@ function applyTheme(theme) {
     html.classList.add('light');
     html.classList.remove('dark');
   }
-  
-  localStorage.setItem(THEME_KEY, theme);
+  try { localStorage.setItem(THEME_KEY, theme); } catch { }
+  setMetaThemeColor(theme);
+}
+
+// Update toggle button icon
+function updateThemeToggleButton(theme) {
+  const toggleBtn = document.getElementById('themeToggle');
+  if (!toggleBtn) return;
+
+  const hasFA = !!document.querySelector('link[href*="font-awesome"], link[href*="fontawesome"], script[src*="fontawesome"]');
+  if (hasFA) {
+    toggleBtn.innerHTML = theme === DARK_THEME ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  } else {
+    toggleBtn.textContent = theme === DARK_THEME ? '☀️' : '🌙';
+  }
+  toggleBtn.title = theme === DARK_THEME ? 'Modo Claro' : 'Modo Escuro';
 }
 
 // Toggle theme
@@ -38,27 +53,20 @@ function toggleTheme() {
   updateThemeToggleButton(newTheme);
 }
 
-// Update toggle button icon
-function updateThemeToggleButton(theme) {
-  const toggleBtn = document.getElementById('themeToggle');
-  if (!toggleBtn) return;
-  
-  if (theme === DARK_THEME) {
-    toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-    toggleBtn.title = 'Modo Claro';
-  } else {
-    toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
-    toggleBtn.title = 'Modo Escuro';
-  }
-}
-
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-  initializeTheme();
-  const toggleBtn = document.getElementById('themeToggle');
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', toggleTheme);
-  }
-});
-// document.addEventListener('DOMContentLoaded', initializeTheme); // Removido para ser chamado inline no HTML
+  const savedTheme = getSavedTheme();
+  applyTheme(savedTheme);
+  updateThemeToggleButton(savedTheme);
 
+  const toggleBtn = document.getElementById('themeToggle');
+  if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
+
+  // sync com outras abas
+  window.addEventListener('storage', (e) => {
+    if (e.key === THEME_KEY && e.newValue) {
+      applyTheme(e.newValue);
+      updateThemeToggleButton(e.newValue);
+    }
+  });
+});

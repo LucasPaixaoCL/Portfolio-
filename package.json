@@ -5,8 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server-improved.js",
-    "dev": "node --watch server-improved.js",
+    "start": "node server.js",
+    "dev": "node server-demo.js",
     "test": "node test.js",
     "seed": "node seed.js"
   },
@@ -21,4 +21,3 @@
     "body-parser": "^1.20.2"
   }
 }
-

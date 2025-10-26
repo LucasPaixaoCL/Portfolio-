@@ -1,82 +1,207 @@
-/* KittyHub Theme Variables */
-
-/* Light Theme */
-.light {
+/* ========================================================= KittyHub – Glassy Minimal (Cyan/Blue/Teal) ========================================================= */
+/* --------------------- THEME TOKENS --------------------- */
+/* LIGHT */
+:root.light,
+html.light,
+body.light {
+  /* Core palette */
+  --primary: #0ea5e9;
+  /* Sky 500 */
+  --primary-hover: #0284c7;
+  /* Sky 600 */
+  --accent: #22d3ee;
+  /* Cyan 400 */
+  --accent-2: #14b8a6;
+  /* Teal 500 */
+  /* Texts */
+  --text-primary: #0f172a;
+  /* Slate 900 */
+  --text-secondary: #334155;
+  /* Slate 700 */
+  --text-tertiary: #64748b;
+  /* Slate 500 */
+  /* Backgrounds */
   --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #f0f2f5;
-  --text-primary: #1a1a1a;
-  --text-secondary: #666666;
-  --text-tertiary: #999999;
-  --border-color: #e0e0e0;
-  --accent-primary: #6366f1;
-  --accent-secondary: #7c3aed;
+  /* cards */
+  --bg-secondary: #f7fafc;
+  /* page */
+  --bg-tertiary: #eef2f7;
+  /* gradient */
+  /* Borders */
+  --border-color: rgba(15, 23, 42, 0.08);
+  /* Glass (light) */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-shadow: 0 10px 30px rgba(2, 132, 199, 0.15);
+  /* Feedback */
   --success: #10b981;
   --error: #ef4444;
   --warning: #f59e0b;
-  --shadow: rgba(0, 0, 0, 0.1);
-  --shadow-lg: rgba(0, 0, 0, 0.15);
+  /* CTA suave (light) */
+  --cta-from: #f6f9fc;
+  --cta-mid: #eaf6ff;
+  --cta-to: #e4ecff;
+  /* Footer sólido */
+  --footer-bg: #0f172a;
+  /* navy escuro no tema claro */
 }
 
-/* Dark Theme - Purple & Gray tones */
-.dark {
-  --bg-primary: #0f0f1e;
-  --bg-secondary: #1a1a2e;
-  --bg-tertiary: #252540;
-  --text-primary: #f5f5f5;
-  --text-secondary: #b0b0b0;
-  --text-tertiary: #808080;
-  --border-color: #3a3a4e;
-  --accent-primary: #8b5cf6;
-  --accent-secondary: #a78bfa;
+/* DARK – navy profundo */
+:root.dark,
+html.dark,
+body.dark {
+  /* Base escura */
+  --bg-primary: #0B0F14;
+  --bg-secondary: #070A0F;
+  --bg-tertiary: #0F1622;
+  /* Texts */
+  --text-primary: #E6F0FF;
+  --text-secondary: #BFD0EC;
+  --text-tertiary: #93A4BF;
+  /* Acentos */
+  --primary: #22D3EE;
+  /* Cyan 400 */
+  --primary-hover: #06B6D4;
+  /* Cyan 500 */
+  --accent: #38BDF8;
+  /* Sky 400 */
+  --accent-2: #2DD4BF;
+  /* Teal 400 */
+  /* Bordas e vidro */
+  --border-color: rgba(148, 163, 184, 0.14);
+  --glass-bg: rgba(11, 15, 20, 0.32);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-shadow: 0 14px 44px rgba(34, 211, 238, 0.16);
   --success: #34d399;
   --error: #f87171;
   --warning: #fbbf24;
-  --shadow: rgba(0, 0, 0, 0.3);
-  --shadow-lg: rgba(0, 0, 0, 0.5);
+  /* CTA vibrante (dark) – usado apenas em elementos, não na seção */
+  --cta-from: #22d3ee;
+  --cta-mid: #38bdf8;
+  --cta-to: #06b6d4;
+  /* Footer sólido */
+  --footer-bg: #070A0F;
 }
 
-/* Global Styles */
+/* --------------------- BASE/RESET --------------------- */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease;
 }
 
+html,
 body {
-  background-color: var(--bg-secondary);
+  background: var(--bg-secondary);
   color: var(--text-primary);
 }
 
-/* Headers */
-header {
-  background-color: var(--bg-primary);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 2px 4px var(--shadow);
-}
-
-/* Sections */
-section {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-}
-
-section.bg-white {
-  background-color: var(--bg-primary) !important;
-}
-
-section.bg-slate-50 {
-  background-color: var(--bg-secondary) !important;
-}
-
-section.bg-slate-100 {
-  background-color: var(--bg-tertiary) !important;
-}
-
-/* Gradient backgrounds */
+/* Gradiente de fundo da página que respeita o tema */
 .bg-gradient-to-br {
   background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
 }
 
-/* Text colors */
+/* --------------------- GLASS HELPERS --------------------- */
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-sm {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
+}
+
+/* Gradiente antigo do CTA – mantido para compatibilidade, mas não usado aqui */
+.bg-accent-gradient {
+  background-image: linear-gradient(135deg, var(--cta-from) 0%, var(--cta-mid) 45%, var(--cta-to) 100%) !important;
+}
+
+/* Nova implementação do CTA */
+.cta-section {
+  position: relative;
+  padding: 4rem 1rem;
+  margin-top: 2rem;
+  background: var(--cta-section-bg, transparent);
+}
+
+/* Light: banner leve, sem “estourar” */
+.light .cta-section {
+  --cta-section-bg: linear-gradient(135deg, #eef7ff 0%, #e8f4ff 45%, #edf0ff 100%);
+}
+
+/* Dark: NADA de retângulo azul – usa o mesmo fundo da página */
+.dark .cta-section {
+  --cta-section-bg: transparent;
+}
+
+.cta-card {
+  position: relative;
+  border-radius: 14px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Glow suave no dark ao redor do card, sem chapar o fundo */
+.dark .cta-card::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  z-index: -1;
+  border-radius: 24px;
+  background: radial-gradient(60% 50% at 50% 0%, rgba(34, 211, 238, 0.10) 0%, rgba(56, 189, 248, 0.06) 30%, transparent 70%);
+  filter: blur(8px);
+}
+
+/* Títulos e textos do CTA respeitando o tema */
+.cta-card h2 {
+  color: var(--text-primary);
+}
+
+.cta-card p {
+  color: var(--text-secondary);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 60%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --------------------- LAYOUT --------------------- */
+/* Header flutuante (sem linha global) */
+header {
+  background: transparent;
+  border-bottom: none;
+}
+
+header .wrap {
+  padding: .6rem 1rem;
+  border-radius: 12px;
+}
+
+@media (min-width: 768px) {
+  header .wrap {
+    margin-top: .6rem;
+  }
+}
+
+section {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+/* --------------------- UTILITÁRIOS DE COR --------------------- */
 .text-slate-900 {
   color: var(--text-primary) !important;
 }
@@ -89,72 +214,92 @@ section.bg-slate-100 {
   color: var(--text-tertiary) !important;
 }
 
-/* Border colors */
 .border-slate-200 {
   border-color: var(--border-color) !important;
 }
 
-/* Buttons */
+/* Botões/links “azuis” mapeados ao tema */
 .bg-blue-600 {
-  background-color: var(--accent-primary) !important;
+  background-color: var(--primary) !important;
 }
 
 .bg-blue-600:hover {
-  background-color: var(--accent-secondary) !important;
+  background-color: var(--primary-hover) !important;
 }
 
 .bg-blue-700 {
-  background-color: var(--accent-secondary) !important;
+  background-color: var(--primary-hover) !important;
 }
 
 .text-blue-600 {
-  color: var(--accent-primary) !important;
+  color: var(--primary) !important;
 }
 
 .text-blue-700 {
-  color: var(--accent-secondary) !important;
+  color: var(--primary-hover) !important;
 }
 
-/* Cards and containers */
+/* Botão vidro */
+.btn-glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--text-primary);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+
+.btn-glass:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+}
+
+/* Containers mapeados */
 .bg-white {
   background-color: var(--bg-primary) !important;
 }
 
 .bg-slate-900 {
-  background-color: #1a1a2e !important;
+  background-color: #0f172a !important;
 }
 
 .dark .bg-slate-900 {
-  background-color: #0f0f1e !important;
+  background-color: var(--bg-primary) !important;
 }
 
-/* Forms */
-input, textarea, select {
-  background-color: var(--bg-secondary);
+/* Sombra hover suave */
+.hover\:shadow-lg:hover {
+  box-shadow: 0 16px 32px rgba(2, 132, 199, .12);
+}
+
+/* --------------------- FORMS --------------------- */
+input,
+textarea,
+select {
+  background: rgba(255, 255, 255, .65);
   color: var(--text-primary);
-  border-color: var(--border-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
 }
 
-input::placeholder, textarea::placeholder {
+.dark input,
+.dark textarea,
+.dark select {
+  background: rgba(255, 255, 255, .04);
+}
+
+input::placeholder,
+textarea::placeholder {
   color: var(--text-tertiary);
 }
 
-/* Links */
-a {
-  color: var(--accent-primary);
-}
-
-a:hover {
-  color: var(--accent-secondary);
-}
-
-/* Success/Error messages */
+/* --------------------- FEEDBACKS --------------------- */
 .bg-green-50 {
-  background-color: rgba(16, 185, 129, 0.1) !important;
+  background-color: rgba(16, 185, 129, .12) !important;
 }
 
 .bg-red-50 {
-  background-color: rgba(239, 68, 68, 0.1) !important;
+  background-color: rgba(239, 68, 68, .12) !important;
 }
 
 .text-green-800 {
@@ -165,22 +310,63 @@ a:hover {
   color: var(--error) !important;
 }
 
-/* Hover effects */
-.hover\:shadow-lg:hover {
-  box-shadow: 0 10px 15px var(--shadow-lg);
+/* --------------------- BADGES (Tecnologias) --------------------- */
+.badge {
+  display: inline-block;
+  padding: .35rem .65rem;
+  border-radius: 9999px;
+  font-size: .75rem;
+  line-height: 1;
+  font-weight: 600;
+  border: 1px solid transparent;
+  white-space: nowrap;
 }
 
-/* Footer */
+.badge-primary {
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 16%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.badge-green {
+  color: #10b981;
+  background: rgba(16, 185, 129, .14);
+  border-color: rgba(16, 185, 129, .28);
+}
+
+.badge-violet {
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, .16);
+  border-color: rgba(139, 92, 246, .28);
+}
+
+.badge-pink {
+  color: #ec4899;
+  background: rgba(236, 72, 153, .16);
+  border-color: rgba(236, 72, 153, .28);
+}
+
+.badge-amber {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, .16);
+  border-color: rgba(245, 158, 11, .28);
+}
+
+/* --------------------- FOOTER --------------------- */
 footer {
-  background-color: #1a1a2e !important;
+  background: transparent !important;
 }
 
-.dark footer {
-  background-color: #0f0f1e !important;
+/* use com footer-glass */
+.footer-glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
-/* Smooth transitions */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+/* Versão sólida, largura total */
+.footer-solid {
+  background: var(--footer-bg) !important;
 }
-
