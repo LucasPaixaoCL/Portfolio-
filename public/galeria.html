@@ -4,124 +4,238 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria de Projetos - KittyHub</title> <!-- Anti-FOUC -->
-  <script> (function () { var KEY = 'kittyhub-theme', L = 'light', D = 'dark'; var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) { } var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? D : L); var html = document.documentElement; html.classList.toggle('dark', theme === D); html.classList.toggle('light', theme !== D); })(); </script>
+  <title>Galeria de Projetos - KittyHub</title>
+
+  <!-- Anti-FOUC -->
+  <script>
+    (function () {
+      var KEY = 'kittyhub-theme', L = 'light', D = 'dark';
+      var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) { }
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? D : L);
+      var html = document.documentElement;
+      html.classList.toggle('dark', theme === D);
+      html.classList.toggle('light', theme !== D);
+    })();
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="theme.js" defer></script>
 </head>
 
-<body class="bg-gradient-to-br from-slate-50 to-slate-100"> <!-- Header -->
+<body class="bg-gradient-to-br from-slate-50 to-slate-100">
+
+  <!-- Header -->
   <header class="sticky top-0 z-50">
-    <div class="wrap glass-sm max-w-6xl mx-auto px-4 py-3 flex items-center justify-between"> <a href="/"
-        class="text-2xl font-bold text-slate-900 hover:opacity-90 transition">KittyHub</a>
-      <nav class="hidden md:flex gap-8"> <a href="/" class="text-slate-600 hover:text-slate-900 transition">Home</a> <a
-          href="/galeria.html" class="text-slate-900 font-semibold">Galeria</a> <a href="/sobre.html"
-          class="text-slate-600 hover:text-slate-900 transition">Sobre Mim</a> <a href="/#contact"
-          class="text-slate-600 hover:text-slate-900 transition">Contato</a> </nav>
-      <div class="flex items-center gap-4"> <button id="themeToggle"
-          class="text-slate-400 hover:opacity-90 transition text-xl" title="Alternar tema"> <i class="fas fa-moon"></i>
-        </button> <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400" aria-label="Abrir menu"> <i
-            class="fas fa-bars text-2xl"></i> </button> </div>
-    </div> <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
-      <nav class="flex flex-col gap-4 px-4 py-4"> <a href="/"
-          class="text-slate-700 hover:text-slate-900 transition">Home</a> <a href="/galeria.html"
-          class="text-slate-900 font-semibold">Galeria</a> <a href="/sobre.html"
-          class="text-slate-700 hover:text-slate-900 transition">Sobre Mim</a> <a href="/#contact"
-          class="text-slate-700 hover:text-slate-900 transition">Contato</a> </nav>
-    </div>
-  </header> <!-- Hero -->
-  <section class="py-16 px-4">
-    <div class="max-w-6xl mx-auto text-center">
-      <div class="glass p-10 rounded-lg">
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Meus Projetos</h1>
-        <p class="text-xl text-slate-600">Conheça alguns dos melhores trabalhos que realizei</p>
+    <div class="wrap glass-sm max-w-6xl mx-auto px-4 py-3 flex items-center justify-between fade-in">
+      <a href="/" class="text-2xl font-bold text-slate-900 hover:opacity-90 transition">KittyHub</a>
+      <nav class="hidden md:flex gap-8">
+        <a href="/" class="text-slate-600 hover:text-slate-900 transition">Home</a>
+        <a href="/galeria.html" class="text-slate-900 font-semibold">Galeria</a>
+        <a href="/sobre.html" class="text-slate-600 hover:text-slate-900 transition">Sobre Mim</a>
+        <a href="/#contact" class="text-slate-600 hover:text-slate-900 transition">Contato</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="themeToggle" class="text-slate-400 hover:opacity-90 transition text-xl" title="Alternar tema">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400" aria-label="Abrir menu">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
       </div>
     </div>
-  </section> <!-- Filtros -->
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
+      <nav class="flex flex-col gap-4 px-4 py-4">
+        <a href="/" class="text-slate-700 hover:text-slate-900 transition">Home</a>
+        <a href="/galeria.html" class="text-slate-900 font-semibold">Galeria</a>
+        <a href="/sobre.html" class="text-slate-700 hover:text-slate-900 transition">Sobre Mim</a>
+        <a href="/#contact" class="text-slate-700 hover:text-slate-900 transition">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="py-16 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <div class="glass p-10 rounded-lg fade-in">
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 slide-up">Meus Projetos</h1>
+        <p class="text-xl text-slate-600 fade-in">Conheça alguns dos melhores trabalhos que realizei</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtros -->
   <section class="pt-6 px-4">
     <div class="max-w-6xl mx-auto">
-      <div class="flex flex-wrap justify-center gap-4 mb-12"> <button onclick="filterProjects(event, 'all')"
-          class="filterBtn active px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold transition hover:bg-blue-700">Todos</button>
+      <div class="flex flex-wrap justify-center gap-4 mb-12 fade-in" data-anim-stagger>
+        <button onclick="filterProjects(event, 'all')"
+          class="filterBtn active px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold transition hover:bg-blue-700 hover-lift">Todos</button>
         <button onclick="filterProjects(event, 'web')"
-          class="filterBtn px-6 py-2 rounded-lg btn-glass font-semibold">Web</button> <button
-          onclick="filterProjects(event, 'design')"
-          class="filterBtn px-6 py-2 rounded-lg btn-glass font-semibold">Design</button> <button
-          onclick="filterProjects(event, 'mobile')"
-          class="filterBtn px-6 py-2 rounded-lg btn-glass font-semibold">Mobile</button> </div>
+          class="filterBtn px-6 py-2 rounded-lg btn-glass font-semibold hover-lift">Web</button>
+        <button onclick="filterProjects(event, 'design')"
+          class="filterBtn px-6 py-2 rounded-lg btn-glass font-semibold hover-lift">Design</button>
+        <button onclick="filterProjects(event, 'mobile')"
+          class="filterBtn px-6 py-2 rounded-lg btn-glass font-semibold hover-lift">Mobile</button>
+      </div>
     </div>
-  </section> <!-- Grid -->
+  </section>
+
+  <!-- Grid -->
   <section class="py-8 px-4">
     <div class="max-w-6xl mx-auto">
-      <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10"> <!-- Card 1 -->
-        <article class="project-card glass rounded-xl overflow-hidden" data-category="web">
+      <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" data-anim-stagger>
+        <!-- Card 1 -->
+        <article class="project-card glass rounded-xl overflow-hidden slide-up hover-lift" data-category="web">
           <div
             class="relative h-64 flex items-center justify-center bg-gradient-to-b from-slate-300/20 to-slate-300/10 dark:from-white/5 dark:to-white/0">
-            <i class="fas fa-globe text-white/90 text-6xl"></i> </div>
+            <i class="fas fa-globe text-white/90 text-6xl"></i>
+          </div>
           <div class="p-6">
             <h3 class="text-2xl font-semibold text-slate-900 mb-2">E-commerce Moderno</h3>
             <p class="text-slate-600 mb-4">Plataforma de vendas online com carrinho de compras, pagamento integrado e
               painel administrativo.</p>
-            <div class="flex flex-wrap gap-2 mb-4"> <span class="badge badge-primary">React</span> <span
-                class="badge badge-green">Node.js</span> <span class="badge badge-violet">Stripe</span> </div> <a
-              href="#" class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-2">Ver
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="badge badge-primary">React</span>
+              <span class="badge badge-green">Node.js</span>
+              <span class="badge badge-violet">Stripe</span>
+            </div>
+            <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-2">Ver
               Projeto <i class="fas fa-arrow-right"></i></a>
           </div>
-        </article> <!-- Card 2 -->
-        <article class="project-card glass rounded-xl overflow-hidden" data-category="design">
+        </article>
+
+        <!-- Card 2 -->
+        <article class="project-card glass rounded-xl overflow-hidden slide-up hover-lift" data-category="design">
           <div
             class="relative h-64 flex items-center justify-center bg-gradient-to-b from-slate-300/20 to-slate-300/10 dark:from-white/5 dark:to-white/0">
-            <i class="fas fa-palette text-white/90 text-6xl"></i> </div>
+            <i class="fas fa-palette text-white/90 text-6xl"></i>
+          </div>
           <div class="p-6">
             <h3 class="text-2xl font-semibold text-slate-900 mb-2">Identidade Visual</h3>
             <p class="text-slate-600 mb-4">Desenvolvimento completo de marca: logo, paleta de cores, tipografia e
               guidelines de uso.</p>
-            <div class="flex flex-wrap gap-2 mb-4"> <span class="badge badge-violet">Branding</span> <span
-                class="badge badge-pink">Design</span> <span class="badge badge-primary">Figma</span> </div> <a href="#"
-              class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-2">Ver Projeto <i
-                class="fas fa-arrow-right"></i></a>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="badge badge-violet">Branding</span>
+              <span class="badge badge-pink">Design</span>
+              <span class="badge badge-primary">Figma</span>
+            </div>
+            <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-2">Ver
+              Projeto <i class="fas fa-arrow-right"></i></a>
           </div>
-        </article> <!-- Card 3 -->
-        <article class="project-card glass rounded-xl overflow-hidden" data-category="mobile">
+        </article>
+
+        <!-- Card 3 -->
+        <article class="project-card glass rounded-xl overflow-hidden slide-up hover-lift" data-category="mobile">
           <div
             class="relative h-64 flex items-center justify-center bg-gradient-to-b from-slate-300/20 to-slate-300/10 dark:from-white/5 dark:to-white/0">
-            <i class="fas fa-mobile-alt text-white/90 text-6xl"></i> </div>
+            <i class="fas fa-mobile-alt text-white/90 text-6xl"></i>
+          </div>
           <div class="p-6">
             <h3 class="text-2xl font-semibold text-slate-900 mb-2">App de Fitness</h3>
             <p class="text-slate-600 mb-4">Aplicativo mobile para treinos personalizados com sincronização em tempo real
               e análise de progresso.</p>
-            <div class="flex flex-wrap gap-2 mb-4"> <span class="badge badge-green">React Native</span> <span
-                class="badge badge-primary">Firebase</span> <span class="badge badge-amber">Analytics</span> </div> <a
-              href="#" class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-2">Ver
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="badge badge-green">React Native</span>
+              <span class="badge badge-primary">Firebase</span>
+              <span class="badge badge-amber">Analytics</span>
+            </div>
+            <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-2">Ver
               Projeto <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
       </div>
     </div>
-  </section> <!-- CTA (novo) -->
-  <section class="cta-section">
-    <div class="max-w-4xl mx-auto text-center cta-card py-10 px-6">
-      <h2 class="text-3xl md:text-4xl font-bold mb-3">Gostou dos meus trabalhos?</h2>
-      <p class="text-lg md:text-xl mb-8">Vamos conversar sobre seu próximo projeto!</p> <a href="/#contact"
-        class="inline-block btn-glass font-semibold py-3 px-8 rounded-lg">Entrar em Contato</a>
+  </section>
+
+
+  <!-- Comentários -->
+  <section id="comments" class="py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass p-8 rounded-xl fade-in">
+        <h2 class="text-3xl font-bold text-slate-900 mb-2">Comentários</h2>
+        <p class="text-slate-600 mb-8">Deixe seu feedback sobre os projetos desta galeria.</p>
+
+        <!-- Lista de comentários -->
+        <div id="comments-galeria" data-comments-container data-project-id="galeria" class="mb-8"></div>
+
+        <!-- Formulário -->
+        <form class="space-y-4" onsubmit="handleCommentSubmit(event, 'galeria', 'comments-galeria')">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Nome</label>
+              <input type="text" name="name"
+                class="w-full rounded-lg border border-slate-300 bg-white/70 focus:bg-white px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Seu nome" required />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+              <input type="email" name="email"
+                class="w-full rounded-lg border border-slate-300 bg-white/70 focus:bg-white px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="seu@email.com" required />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Comentário</label>
+            <textarea name="text" rows="4"
+              class="w-full rounded-lg border border-slate-300 bg-white/70 focus:bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Escreva aqui seu comentário…" required></textarea>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <p class="comment-success hidden text-sm text-green-600">
+              Comentário enviado com sucesso!
+            </p>
+            <button type="submit"
+              class="px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold transition hover:bg-blue-700 hover-lift">
+              Enviar comentário
+            </button>
+          </div>
+        </form>
+
+        <!-- Nota de privacidade/local -->
+        <p class="mt-6 text-xs text-slate-500">
+          * Os comentários desta galeria são salvos localmente no seu navegador (localStorage).
+        </p>
+      </div>
     </div>
-  </section> <!-- Footer sólido -->
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="max-w-4xl mx-auto text-center cta-card py-10 px-6 fade-in">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3">Gostou dos meus trabalhos?</h2>
+      <p class="text-lg md:text-xl mb-8">Vamos conversar sobre seu próximo projeto!</p>
+      <a href="/#contact" class="inline-block btn-glass font-semibold py-3 px-8 rounded-lg hover-lift">Entrar em
+        Contato</a>
+    </div>
+  </section>
+
+  <!-- Footer sólido -->
   <footer class="footer-solid text-white py-12 px-4 mt-12">
     <div class="max-w-6xl mx-auto">
-      <div class="flex justify-center gap-6 mb-8"> <a href="https://github.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="GitHub"><i
-            class="fab fa-github text-2xl"></i></a> <a href="https://linkedin.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="LinkedIn"><i
-            class="fab fa-linkedin text-2xl"></i></a> <a href="https://twitter.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Twitter"><i
-            class="fab fa-twitter text-2xl"></i></a> <a href="https://instagram.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Instagram"><i
-            class="fab fa-instagram text-2xl"></i></a> <a href="https://behance.net" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Behance"><i
-            class="fab fa-behance text-2xl"></i></a> <a href="mailto:seu@email.com"
-          class="text-white/70 hover:text-white transition" title="Email"><i class="fas fa-envelope text-2xl"></i></a>
+      <div class="flex justify-center gap-6 mb-8 fade-in" data-anim-stagger>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="GitHub"><i
+            class="fab fa-github text-2xl"></i></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="LinkedIn"><i
+            class="fab fa-linkedin text-2xl"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="Twitter"><i
+            class="fab fa-twitter text-2xl"></i></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="Instagram"><i
+            class="fab fa-instagram text-2xl"></i></a>
+        <a href="https://behance.net" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="Behance"><i
+            class="fab fa-behance text-2xl"></i></a>
+        <a href="mailto:seu@email.com" class="text-white/70 hover:text-white transition slide-up" title="Email"><i
+            class="fas fa-envelope text-2xl"></i></a>
       </div>
       <div class="border-t border-white/10 pt-6 text-center">
         <p class="text-white/70 text-sm">&copy; 2025 KittyHub. Todos os direitos reservados.</p>
@@ -130,7 +244,36 @@
       </div>
     </div>
   </footer>
-  <script> function toggleMobileMenu() { const menu = document.getElementById('mobileMenu'); menu.classList.toggle('hidden'); } function filterProjects(evt, category) { const cards = document.querySelectorAll('.project-card'); const buttons = document.querySelectorAll('.filterBtn'); buttons.forEach(btn => { btn.classList.remove('active', 'bg-blue-600', 'text-white'); btn.classList.add('btn-glass'); }); if (evt && evt.currentTarget) { evt.currentTarget.classList.add('active'); evt.currentTarget.classList.remove('btn-glass'); evt.currentTarget.classList.add('bg-blue-600', 'text-white'); } cards.forEach(card => { if (category === 'all' || card.dataset.category === category) { card.style.display = 'block'; setTimeout(() => card.style.opacity = '1', 10); } else { card.style.opacity = '0'; setTimeout(() => card.style.display = 'none', 200); } }); } </script>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+    function filterProjects(evt, category) {
+      const cards = document.querySelectorAll('.project-card');
+      const buttons = document.querySelectorAll('.filterBtn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active', 'bg-blue-600', 'text-white');
+        btn.classList.add('btn-glass');
+      });
+      if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add('active');
+        evt.currentTarget.classList.remove('btn-glass');
+        evt.currentTarget.classList.add('bg-blue-600', 'text-white');
+      }
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+          requestAnimationFrame(() => { card.classList.add('visible'); card.style.opacity = '1'; });
+        } else {
+          card.classList.remove('visible');
+          card.style.opacity = '0';
+          setTimeout(() => card.style.display = 'none', 200);
+        }
+      });
+    }
+  </script>
   <script src="comments.js"></script>
   <script src="animations.js"></script>
 </body>

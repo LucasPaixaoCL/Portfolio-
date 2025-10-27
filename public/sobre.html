@@ -4,66 +4,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre Mim - KittyHub</title> <!-- Anti-FOUC -->
-  <script> (function () { var KEY = 'kittyhub-theme', L = 'light', D = 'dark'; var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) { } var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? D : L); var html = document.documentElement; html.classList.toggle('dark', theme === D); html.classList.toggle('light', theme !== D); })(); </script>
+  <title>Sobre Mim - KittyHub</title>
+
+  <!-- Anti-FOUC -->
+  <script>
+    (function () {
+      var KEY = 'kittyhub-theme', L = 'light', D = 'dark';
+      var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) { }
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? D : L);
+      var html = document.documentElement;
+      html.classList.toggle('dark', theme === D);
+      html.classList.toggle('light', theme !== D);
+    })();
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="theme.js" defer></script>
 </head>
 
-<body class="bg-gradient-to-br from-slate-50 to-slate-100"> <!-- Header -->
+<body class="bg-gradient-to-br from-slate-50 to-slate-100">
+
+  <!-- Header -->
   <header class="sticky top-0 z-50">
-    <div class="wrap glass-sm max-w-6xl mx-auto px-4 py-3 flex items-center justify-between"> <a href="/"
-        class="text-2xl font-bold text-slate-900 hover:opacity-90 transition">KittyHub</a>
-      <nav class="hidden md:flex gap-8"> <a href="/" class="text-slate-600 hover:text-slate-900 transition">Home</a> <a
-          href="/galeria.html" class="text-slate-600 hover:text-slate-900 transition">Galeria</a> <a href="/sobre.html"
-          class="text-slate-900 font-semibold">Sobre Mim</a> <a href="/#contact"
-          class="text-slate-600 hover:text-slate-900 transition">Contato</a> </nav>
-      <div class="flex items-center gap-4"> <button id="themeToggle"
-          class="text-slate-400 hover:opacity-90 transition text-xl" title="Alternar tema"> <i class="fas fa-moon"></i>
-        </button> <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400" aria-label="Abrir menu"> <i
-            class="fas fa-bars text-2xl"></i> </button> </div>
-    </div> <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
-      <nav class="flex flex-col gap-4 px-4 py-4"> <a href="/"
-          class="text-slate-700 hover:text-slate-900 transition">Home</a> <a href="/galeria.html"
-          class="text-slate-700 hover:text-slate-900 transition">Galeria</a> <a href="/sobre.html"
-          class="text-slate-900 font-semibold">Sobre Mim</a> <a href="/#contact"
-          class="text-slate-700 hover:text-slate-900 transition">Contato</a> </nav>
-    </div>
-  </header> <!-- Hero -->
-  <section class="py-16 px-4">
-    <div class="max-w-6xl mx-auto text-center">
-      <div class="glass p-10 rounded-lg">
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Sobre Mim</h1>
-        <p class="text-xl text-slate-600">Conheça minha história e experiência profissional</p>
+    <div class="wrap glass-sm max-w-6xl mx-auto px-4 py-3 flex items-center justify-between fade-in">
+      <a href="/" class="text-2xl font-bold text-slate-900 hover:opacity-90 transition">KittyHub</a>
+      <nav class="hidden md:flex gap-8">
+        <a href="/" class="text-slate-600 hover:text-slate-900 transition">Home</a>
+        <a href="/galeria.html" class="text-slate-600 hover:text-slate-900 transition">Galeria</a>
+        <a href="/sobre.html" class="text-slate-900 font-semibold">Sobre Mim</a>
+        <a href="/#contact" class="text-slate-600 hover:text-slate-900 transition">Contato</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="themeToggle" class="text-slate-400 hover:opacity-90 transition text-xl" title="Alternar tema">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400" aria-label="Abrir menu">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
       </div>
     </div>
-  </section> <!-- About -->
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
+      <nav class="flex flex-col gap-4 px-4 py-4">
+        <a href="/" class="text-slate-700 hover:text-slate-900 transition">Home</a>
+        <a href="/galeria.html" class="text-slate-700 hover:text-slate-900 transition">Galeria</a>
+        <a href="/sobre.html" class="text-slate-900 font-semibold">Sobre Mim</a>
+        <a href="/#contact" class="text-slate-700 hover:text-slate-900 transition">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="py-16 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <div class="glass p-10 rounded-lg fade-in">
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 slide-up">Sobre Mim</h1>
+        <p class="text-xl text-slate-600 fade-in">Conheça minha história e experiência profissional</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
   <section class="py-16 px-4">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
         <div class="flex justify-center">
-          <div class="w-80 h-80 rounded-lg overflow-hidden glass flex items-center justify-center"> <i
-              class="fas fa-user text-8xl opacity-50"></i> </div>
+          <div class="w-80 h-80 rounded-lg overflow-hidden glass flex items-center justify-center scale-in hover-lift">
+            <i class="fas fa-user text-8xl opacity-50"></i>
+          </div>
         </div>
+
         <div>
-          <h2 class="text-3xl font-bold text-slate-900 mb-6">Olá! Sou um Profissional Criativo</h2>
-          <p class="text-lg text-slate-600 mb-4 leading-relaxed"> Com mais de 8 anos de experiência em design e
-            desenvolvimento web, tenho dedicado minha carreira a criar soluções digitais inovadoras e impactantes. </p>
-          <p class="text-lg text-slate-600 mb-6 leading-relaxed"> Trabalho com uma abordagem centrada no usuário,
-            garantindo que cada projeto não apenas atenda aos requisitos técnicos, mas também proporcione uma
-            experiência excepcional. </p>
-          <div class="flex gap-4"> <a href="/#contact"
-              class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition">Vamos Trabalhar
-              Juntos</a> <a href="#" class="btn-glass font-bold py-3 px-8 rounded-lg transition">Baixar CV</a> </div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-6 fade-in">Olá! Sou um Profissional Criativo</h2>
+          <p class="text-lg text-slate-600 mb-4 leading-relaxed slide-up">
+            Com mais de 8 anos de experiência em design e desenvolvimento web, tenho dedicado minha carreira a criar
+            soluções digitais inovadoras e impactantes.
+          </p>
+          <p class="text-lg text-slate-600 mb-6 leading-relaxed slide-up">
+            Trabalho com uma abordagem centrada no usuário, garantindo que cada projeto não apenas atenda aos requisitos
+            técnicos, mas também proporcione uma experiência excepcional.
+          </p>
+          <div class="flex gap-4 fade-in">
+            <a href="/#contact"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition hover-lift">Vamos
+              Trabalhar
+              Juntos</a>
+            <a href="#" class="btn-glass font-bold py-3 px-8 rounded-lg transition hover-lift">Baixar CV</a>
+          </div>
         </div>
-      </div> <!-- Experiência -->
+      </div>
+
+      <!-- Experiência -->
       <div class="mb-20">
-        <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">Experiência Profissional</h2>
-        <div class="space-y-8">
-          <div class="flex gap-6">
+        <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center fade-in">Experiência Profissional</h2>
+        <div class="space-y-8" data-anim-stagger>
+          <div class="flex gap-6 slide-up">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white"><i
                   class="fas fa-briefcase"></i></div>
@@ -74,7 +113,7 @@
               <p class="text-slate-600 mt-2">Liderança de projetos de design para clientes enterprise...</p>
             </div>
           </div>
-          <div class="flex gap-6">
+          <div class="flex gap-6 slide-up">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white"><i
                   class="fas fa-briefcase"></i></div>
@@ -85,7 +124,7 @@
               <p class="text-slate-600 mt-2">Desenvolvimento de aplicações web e mobile...</p>
             </div>
           </div>
-          <div class="flex gap-6">
+          <div class="flex gap-6 slide-up">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white"><i
                   class="fas fa-briefcase"></i></div>
@@ -97,12 +136,14 @@
             </div>
           </div>
         </div>
-      </div> <!-- Habilidades e Competências -->
+      </div>
+
+      <!-- Habilidades e Competências -->
       <section class="py-4">
         <div class="max-w-6xl mx-auto">
-          <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">Habilidades e Competências</h2>
-          <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass p-8 rounded-lg">
+          <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center fade-in">Habilidades e Competências</h2>
+          <div class="grid md:grid-cols-3 gap-8" data-anim-stagger>
+            <div class="glass p-8 rounded-lg slide-up hover-lift">
               <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3"><i
                   class="fas fa-code text-blue-600"></i>Desenvolvimento</h3>
               <ul class="space-y-3">
@@ -118,7 +159,7 @@
                   &amp; GraphQL</li>
               </ul>
             </div>
-            <div class="glass p-8 rounded-lg">
+            <div class="glass p-8 rounded-lg slide-up hover-lift">
               <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3"><i
                   class="fas fa-palette text-purple-600"></i>Design</h3>
               <ul class="space-y-3">
@@ -134,7 +175,7 @@
                 </li>
               </ul>
             </div>
-            <div class="glass p-8 rounded-lg">
+            <div class="glass p-8 rounded-lg slide-up hover-lift">
               <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3"><i
                   class="fas fa-tools text-orange-500"></i>Ferramentas</h3>
               <ul class="space-y-3">
@@ -153,29 +194,41 @@
           </div>
         </div>
       </section>
+
     </div>
-  </section> <!-- CTA (novo) -->
+  </section>
+
+  <!-- CTA -->
   <section class="cta-section">
-    <div class="max-w-4xl mx-auto text-center cta-card py-10 px-6">
+    <div class="max-w-4xl mx-auto text-center cta-card py-10 px-6 fade-in">
       <h2 class="text-3xl md:text-4xl font-bold mb-3">Vamos criar algo incrível juntos?</h2>
-      <p class="text-xl mb-8">Tenho interesse em projetos desafiadores que façam diferença</p> <a href="/#contact"
-        class="inline-block btn-glass font-semibold py-3 px-8 rounded-lg">Entrar em Contato</a>
+      <p class="text-xl mb-8">Tenho interesse em projetos desafiadores que façam diferença</p>
+      <a href="/#contact" class="inline-block btn-glass font-semibold py-3 px-8 rounded-lg hover-lift">Entrar em
+        Contato</a>
     </div>
-  </section> <!-- Footer sólido -->
+  </section>
+
+  <!-- Footer sólido -->
   <footer class="footer-solid text-white py-12 px-4 mt-12">
     <div class="max-w-6xl mx-auto">
-      <div class="flex justify-center gap-6 mb-8"> <a href="https://github.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="GitHub"><i
-            class="fab fa-github text-2xl"></i></a> <a href="https://linkedin.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="LinkedIn"><i
-            class="fab fa-linkedin text-2xl"></i></a> <a href="https://twitter.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Twitter"><i
-            class="fab fa-twitter text-2xl"></i></a> <a href="https://instagram.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Instagram"><i
-            class="fab fa-instagram text-2xl"></i></a> <a href="https://behance.net" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Behance"><i
-            class="fab fa-behance text-2xl"></i></a> <a href="mailto:seu@email.com"
-          class="text-white/70 hover:text-white transition" title="Email"><i class="fas fa-envelope text-2xl"></i></a>
+      <div class="flex justify-center gap-6 mb-8 fade-in" data-anim-stagger>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="GitHub"><i
+            class="fab fa-github text-2xl"></i></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="LinkedIn"><i
+            class="fab fa-linkedin text-2xl"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="Twitter"><i
+            class="fab fa-twitter text-2xl"></i></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="Instagram"><i
+            class="fab fa-instagram text-2xl"></i></a>
+        <a href="https://behance.net" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="Behance"><i
+            class="fab fa-behance text-2xl"></i></a>
+        <a href="mailto:seu@email.com" class="text-white/70 hover:text-white transition slide-up" title="Email"><i
+            class="fas fa-envelope text-2xl"></i></a>
       </div>
       <div class="border-t border-white/10 pt-6 text-center">
         <p class="text-white/70 text-sm">&copy; 2025 KittyHub. Todos os direitos reservados.</p>

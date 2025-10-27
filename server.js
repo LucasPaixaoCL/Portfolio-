@@ -115,6 +115,70 @@ app.get('/api/contacts', async (req, res) => {
   }
 });
 
+
+// --- COMMENTS API ---
+
+// Listar comentários por projeto: GET /api/comments?projectId=galeria
+app.get('/api/comments', async (req, res) => {
+  try {
+    const projectId = String(req.query.projectId || '').trim();
+    if (!projectId) return res.status(400).json({ success: false, error: 'projectId é obrigatório' });
+
+    const { rows } = await pool.query(
+      'SELECT id, project_id, name, email, text, created_at FROM comments WHERE project_id = $1 ORDER BY created_at DESC',
+      [projectId]
+    );
+
+    res.json({ success: true, comments: rows });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ success: false, error: 'Erro ao listar comentários' });
+  }
+});
+
+// Criar comentário: POST /api/comments
+// Body: { projectId, name, email, text }
+app.post('/api/comments', async (req, res) => {
+  try {
+    const { projectId, name, email, text } = req.body || {};
+    if (!projectId || !name || !email || !text) {
+      return res.status(400).json({ success: false, error: 'projectId, name, email, text são obrigatórios' });
+    }
+
+    const q = `
+      INSERT INTO comments (project_id, name, email, text)
+      VALUES ($1, $2, $3, $4)
+      RETURNING id, project_id, name, email, text, created_at
+    `;
+    const { rows } = await pool.query(q, [
+      String(projectId).trim(),
+      String(name).trim(),
+      String(email).trim(),
+      String(text).trim()
+    ]);
+
+    res.status(201).json({ success: true, comment: rows[0] });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ success: false, error: 'Erro ao salvar comentário' });
+  }
+});
+
+// Opcional: deletar comentário
+app.delete('/api/comments/:id', async (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    if (!Number.isFinite(id)) return res.status(400).json({ success: false, error: 'id inválido' });
+
+    await pool.query('DELETE FROM comments WHERE id = $1', [id]);
+    res.json({ success: true });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ success: false, error: 'Erro ao deletar comentário' });
+  }
+});
+
+
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);

@@ -4,115 +4,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KittyHub - Seu Portfólio Digital</title> <!-- Anti-FOUC -->
-  <script> (function () { var KEY = 'kittyhub-theme', L = 'light', D = 'dark'; var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) { } var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? D : L); var html = document.documentElement; html.classList.toggle('dark', theme === D); html.classList.toggle('light', theme !== D); })(); </script>
+  <title>KittyHub - Seu Portfólio Digital</title>
+
+  <!-- Anti-FOUC -->
+  <script>
+    (function () {
+      var KEY = 'kittyhub-theme', L = 'light', D = 'dark';
+      var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) { }
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? D : L);
+      var html = document.documentElement;
+      html.classList.toggle('dark', theme === D);
+      html.classList.toggle('light', theme !== D);
+    })();
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script src="theme.js" defer></script>
 </head>
 
-<body class="bg-gradient-to-br from-slate-50 to-slate-100"> <!-- Header -->
+<body class="bg-gradient-to-br from-slate-50 to-slate-100">
+
+  <!-- Header -->
   <header class="sticky top-0 z-50">
-    <div class="wrap glass-sm max-w-6xl mx-auto px-4 py-3 flex items-center justify-between"> <a href="/"
-        class="text-2xl font-bold text-slate-900 hover:opacity-90 transition">KittyHub</a>
-      <nav class="hidden md:flex gap-8"> <a href="/" class="text-slate-600 hover:text-slate-900 transition">Home</a> <a
-          href="/galeria.html" class="text-slate-600 hover:text-slate-900 transition">Galeria</a> <a href="/sobre.html"
-          class="text-slate-600 hover:text-slate-900 transition">Sobre Mim</a> <a href="#contact"
-          class="text-slate-600 hover:text-slate-900 transition">Contato</a> </nav>
-      <div class="flex items-center gap-4"> <button id="themeToggle"
-          class="text-slate-400 hover:opacity-90 transition text-xl" title="Alternar tema"> <i class="fas fa-moon"></i>
-        </button> <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400" aria-label="Abrir menu"> <i
-            class="fas fa-bars text-2xl"></i> </button> </div>
-    </div> <!-- Mobile Menu -->
+    <div class="wrap glass-sm max-w-6xl mx-auto px-4 py-3 flex items-center justify-between fade-in">
+      <a href="/" class="text-2xl font-bold text-slate-900 hover:opacity-90 transition">KittyHub</a>
+      <nav class="hidden md:flex gap-8">
+        <a href="/" class="text-slate-600 hover:text-slate-900 transition">Home</a>
+        <a href="/galeria.html" class="text-slate-600 hover:text-slate-900 transition">Galeria</a>
+        <a href="/sobre.html" class="text-slate-600 hover:text-slate-900 transition">Sobre Mim</a>
+        <a href="#contact" class="text-slate-600 hover:text-slate-900 transition">Contato</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="themeToggle" class="text-slate-400 hover:opacity-90 transition text-xl" title="Alternar tema">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400" aria-label="Abrir menu">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
-      <nav class="flex flex-col gap-4 px-4 py-4"> <a href="/"
-          class="text-slate-700 hover:text-slate-900 transition">Home</a> <a href="/galeria.html"
-          class="text-slate-700 hover:text-slate-900 transition">Galeria</a> <a href="/sobre.html"
-          class="text-slate-700 hover:text-slate-900 transition">Sobre Mim</a> <a href="#contact"
-          class="text-slate-700 hover:text-slate-900 transition">Contato</a> </nav>
+      <nav class="flex flex-col gap-4 px-4 py-4">
+        <a href="/" class="text-slate-700 hover:text-slate-900 transition">Home</a>
+        <a href="/galeria.html" class="text-slate-700 hover:text-slate-900 transition">Galeria</a>
+        <a href="/sobre.html" class="text-slate-700 hover:text-slate-900 transition">Sobre Mim</a>
+        <a href="#contact" class="text-slate-700 hover:text-slate-900 transition">Contato</a>
+      </nav>
     </div>
-  </header> <!-- Hero -->
+  </header>
+
+  <!-- Hero -->
   <section class="px-4 py-24">
-    <div class="max-w-3xl mx-auto text-center glass p-10">
-      <h1 class="text-5xl md:text-6xl font-bold text-gradient mb-6">Seu Portfólio Digital</h1>
-      <p class="text-xl text-slate-600 mb-8">Mostre seus trabalhos e receba contatos de clientes interessados.</p>
-      <button onclick="scrollToContact()" class="btn-glass font-semibold py-3 px-8 rounded-lg">Comece Agora</button>
+    <div class="max-w-3xl mx-auto text-center glass p-10 rounded-lg fade-in">
+      <h1 class="text-5xl md:text-6xl font-bold text-gradient mb-6 slide-up">Seu Portfólio Digital</h1>
+      <p class="text-xl text-slate-600 mb-8 fade-in">Mostre seus trabalhos e receba contatos de clientes interessados.
+      </p>
+      <button onclick="scrollToContact()" class="btn-glass font-semibold py-3 px-8 rounded-lg hover-lift">
+        Comece Agora
+      </button>
     </div>
-  </section> <!-- Features -->
+  </section>
+
+  <!-- Features -->
   <section id="features" class="py-20 px-4">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold text-center text-slate-900 mb-16">Por que usar um Portfólio Digital?</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-8 glass rounded-lg text-center hover:shadow-lg transition">
+      <h2 class="text-4xl font-bold text-center text-slate-900 mb-16 fade-in">Por que usar um Portfólio Digital?</h2>
+      <div class="grid md:grid-cols-3 gap-8" data-anim-stagger>
+        <div class="p-8 glass rounded-lg text-center hover:shadow-lg transition slide-up hover-lift">
           <div class="flex justify-center mb-4"><i class="fas fa-comments text-blue-600 text-4xl"></i></div>
           <h3 class="text-xl font-semibold text-slate-900 mb-3">Simples</h3>
           <p class="text-slate-600">Crie seu portfólio em minutos, sem conhecimento técnico.</p>
         </div>
-        <div class="p-8 glass rounded-lg text-center hover:shadow-lg transition">
+        <div class="p-8 glass rounded-lg text-center hover:shadow-lg transition slide-up hover-lift">
           <div class="flex justify-center mb-4"><i class="fas fa-check-circle text-green-600 text-4xl"></i></div>
           <h3 class="text-xl font-semibold text-slate-900 mb-3">Funcional</h3>
           <p class="text-slate-600">Receba contatos de clientes interessados em seus trabalhos.</p>
         </div>
-        <div class="p-8 glass rounded-lg text-center hover:shadow-lg transition">
+        <div class="p-8 glass rounded-lg text-center hover:shadow-lg transition slide-up hover-lift">
           <div class="flex justify-center mb-4"><i class="fas fa-envelope text-blue-600 text-4xl"></i></div>
           <h3 class="text-xl font-semibold text-slate-900 mb-3">Moderno</h3>
           <p class="text-slate-600">Design profissional que impressiona seus clientes.</p>
         </div>
       </div>
     </div>
-  </section> <!-- Contact -->
+  </section>
+
+  <!-- Contact -->
   <section id="contact" class="py-20 px-4">
-    <div class="max-w-2xl mx-auto glass p-8 rounded-lg">
-      <h2 class="text-4xl font-bold text-center text-slate-900 mb-12">Envie uma Mensagem</h2>
+    <div class="max-w-2xl mx-auto glass p-8 rounded-lg fade-in">
+      <h2 class="text-4xl font-bold text-center text-slate-900 mb-12 slide-up">Envie uma Mensagem</h2>
+
       <div id="successMessage"
-        class="hidden mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3"> <i
-          class="fas fa-check-circle"></i>
+        class="hidden mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
+        <i class="fas fa-check-circle"></i>
         <p class="text-green-800">Mensagem enviada com sucesso! Entraremos em contato em breve.</p>
       </div>
       <div id="errorMessage" class="hidden mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
         <p id="errorText" class="text-red-800"></p>
       </div>
-      <form id="contactForm" onsubmit="handleSubmit(event)">
-        <div class="mb-6"> <label class="block text-sm font-medium text-slate-900 mb-2"><i
-              class="fas fa-user mr-2"></i>Nome</label> <input type="text" name="name" id="name" placeholder="Seu nome"
-            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600"
-            required> </div>
-        <div class="mb-6"> <label class="block text-sm font-medium text-slate-900 mb-2"><i
-              class="fas fa-envelope mr-2"></i>Email</label> <input type="email" name="email" id="email"
-            placeholder="seu@email.com"
-            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600"
-            required> </div>
-        <div class="mb-6"> <label class="block text-sm font-medium text-slate-900 mb-2"><i
-              class="fas fa-comment mr-2"></i>Mensagem</label> <textarea name="message" id="message" rows="5"
-            placeholder="Sua mensagem aqui..."
-            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600"
-            required></textarea> </div> <button type="submit" id="submitBtn"
-          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">Enviar</button>
+
+      <form id="contactForm" onsubmit="handleSubmit(event)" class="fade-in" data-anim-stagger>
+        <div class="mb-6 slide-up">
+          <label class="block text-sm font-medium text-slate-900 mb-2"><i class="fas fa-user mr-2"></i>Nome</label>
+          <input type="text" name="name" id="name" placeholder="Seu nome"
+            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600 focus-ring"
+            required>
+        </div>
+        <div class="mb-6 slide-up">
+          <label class="block text-sm font-medium text-slate-900 mb-2"><i class="fas fa-envelope mr-2"></i>Email</label>
+          <input type="email" name="email" id="email" placeholder="seu@email.com"
+            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600 focus-ring"
+            required>
+        </div>
+        <div class="mb-6 slide-up">
+          <label class="block text-sm font-medium text-slate-900 mb-2"><i
+              class="fas fa-comment mr-2"></i>Mensagem</label>
+          <textarea name="message" id="message" rows="5" placeholder="Sua mensagem aqui..."
+            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-600 focus-ring"
+            required></textarea>
+        </div>
+        <button type="submit" id="submitBtn"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition hover-lift">
+          Enviar
+        </button>
       </form>
     </div>
-  </section> <!-- CTA (novo: seção e card) -->
+  </section>
+
+  <!-- CTA -->
   <section class="cta-section">
-    <div class="max-w-4xl mx-auto text-center cta-card py-10 px-6">
+    <div class="max-w-4xl mx-auto text-center cta-card py-10 px-6 fade-in">
       <h2 class="text-3xl md:text-4xl font-bold mb-3">Gostou dos meus trabalhos?</h2>
-      <p class="text-lg md:text-xl mb-8">Vamos conversar sobre seu próximo projeto!</p> <a href="/#contact"
-        class="inline-block btn-glass font-semibold py-3 px-8 rounded-lg">Entrar em Contato</a>
+      <p class="text-lg md:text-xl mb-8">Vamos conversar sobre seu próximo projeto!</p>
+      <a href="/#contact" class="inline-block btn-glass font-semibold py-3 px-8 rounded-lg hover-lift">Entrar em
+        Contato</a>
     </div>
-  </section> <!-- Footer sólido -->
+  </section>
+
+  <!-- Footer sólido -->
   <footer class="footer-solid text-white py-12 px-4 mt-12">
     <div class="max-w-6xl mx-auto">
-      <div class="flex justify-center gap-6 mb-8"> <a href="https://github.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="GitHub"><i
-            class="fab fa-github text-2xl"></i></a> <a href="https://linkedin.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="LinkedIn"><i
-            class="fab fa-linkedin text-2xl"></i></a> <a href="https://twitter.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Twitter"><i
-            class="fab fa-twitter text-2xl"></i></a> <a href="https://instagram.com" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Instagram"><i
-            class="fab fa-instagram text-2xl"></i></a> <a href="https://behance.net" target="_blank"
-          rel="noopener noreferrer" class="text-white/70 hover:text-white transition" title="Behance"><i
-            class="fab fa-behance text-2xl"></i></a> <a href="mailto:seu@email.com"
-          class="text-white/70 hover:text-white transition" title="Email"><i class="fas fa-envelope text-2xl"></i></a>
+      <div class="flex justify-center gap-6 mb-8 fade-in" data-anim-stagger>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="GitHub"><i
+            class="fab fa-github text-2xl"></i></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="LinkedIn"><i
+            class="fab fa-linkedin text-2xl"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="Twitter"><i
+            class="fab fa-twitter text-2xl"></i></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="Instagram"><i
+            class="fab fa-instagram text-2xl"></i></a>
+        <a href="https://behance.net" target="_blank" rel="noopener noreferrer"
+          class="text-white/70 hover:text-white transition slide-up" title="Behance"><i
+            class="fab fa-behance text-2xl"></i></a>
+        <a href="mailto:seu@email.com" class="text-white/70 hover:text-white transition slide-up" title="Email"><i
+            class="fas fa-envelope text-2xl"></i></a>
       </div>
       <div class="border-t border-white/10 pt-6 text-center">
         <p class="text-white/70 text-sm">&copy; 2025 KittyHub. Todos os direitos reservados.</p>
@@ -121,6 +174,7 @@
       </div>
     </div>
   </footer>
+
   <script src="app.js"></script>
   <script src="animations.js"></script>
 </body>
