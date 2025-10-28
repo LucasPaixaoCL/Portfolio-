@@ -26,7 +26,6 @@
 </head>
 
 <body class="bg-gradient-to-br from-slate-50 to-slate-100">
-
   <!-- Header -->
   <header class="sticky top-0 z-50">
     <div class="wrap glass-sm max-w-6xl mx-auto px-4 py-3 flex items-center justify-between fade-in">
@@ -88,7 +87,7 @@
   <section class="py-8 px-4">
     <div class="max-w-6xl mx-auto">
       <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" data-anim-stagger>
-        <!-- Card 1 -->
+        <!-- Cards de exemplo (inalterados) -->
         <article class="project-card glass rounded-xl overflow-hidden slide-up hover-lift" data-category="web">
           <div
             class="relative h-64 flex items-center justify-center bg-gradient-to-b from-slate-300/20 to-slate-300/10 dark:from-white/5 dark:to-white/0">
@@ -108,7 +107,6 @@
           </div>
         </article>
 
-        <!-- Card 2 -->
         <article class="project-card glass rounded-xl overflow-hidden slide-up hover-lift" data-category="design">
           <div
             class="relative h-64 flex items-center justify-center bg-gradient-to-b from-slate-300/20 to-slate-300/10 dark:from-white/5 dark:to-white/0">
@@ -128,7 +126,6 @@
           </div>
         </article>
 
-        <!-- Card 3 -->
         <article class="project-card glass rounded-xl overflow-hidden slide-up hover-lift" data-category="mobile">
           <div
             class="relative h-64 flex items-center justify-center bg-gradient-to-b from-slate-300/20 to-slate-300/10 dark:from-white/5 dark:to-white/0">
@@ -151,7 +148,6 @@
     </div>
   </section>
 
-
   <!-- Comentários -->
   <section id="comments" class="py-12 px-4">
     <div class="max-w-4xl mx-auto">
@@ -160,7 +156,8 @@
         <p class="text-slate-600 mb-8">Deixe seu feedback sobre os projetos desta galeria.</p>
 
         <!-- Lista de comentários -->
-        <div id="comments-galeria" data-comments-container data-project-id="galeria" class="mb-8"></div>
+        <div id="comments-galeria" data-comments-container data-project-id="galeria" data-can-delete="true"
+          class="mb-8"></div>
 
         <!-- Formulário -->
         <form class="space-y-4" onsubmit="handleCommentSubmit(event, 'galeria', 'comments-galeria')">
@@ -187,9 +184,7 @@
           </div>
 
           <div class="flex items-center justify-between">
-            <p class="comment-success hidden text-sm text-green-600">
-              Comentário enviado com sucesso!
-            </p>
+            <p class="comment-success hidden text-sm text-green-600">Comentário enviado com sucesso!</p>
             <button type="submit"
               class="px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold transition hover:bg-blue-700 hover-lift">
               Enviar comentário
@@ -197,9 +192,9 @@
           </div>
         </form>
 
-        <!-- Nota de privacidade/local -->
+        <!-- Nota -->
         <p class="mt-6 text-xs text-slate-500">
-          * Os comentários desta galeria são salvos localmente no seu navegador (localStorage).
+          * Os comentários desta galeria são enviados ao servidor e armazenados no banco de dados.
         </p>
       </div>
     </div>

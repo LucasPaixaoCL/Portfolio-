@@ -452,3 +452,44 @@ footer {
 .project-card {
   transition: opacity .22s ease, transform .22s ease, box-shadow .22s ease;
 }
+
+/* ===================== Comentários (tema-aware) ===================== */
+.comment-card {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: background-color .22s ease, border-color .22s ease, color .22s ease, box-shadow .22s ease;
+}
+
+.comment-card:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
+}
+
+.dark .comment-card {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.comment-meta {
+  font-size: .875rem;
+  color: var(--text-tertiary);
+}
+
+.comment-text {
+  color: var(--text-secondary);
+}
+
+.comment-delete {
+  background: transparent;
+  border: 0;
+  font-size: .875rem;
+  color: var(--error);
+  cursor: pointer;
+}
+
+.comment-delete:hover {
+  text-decoration: underline;
+  filter: brightness(1.05);
+}
